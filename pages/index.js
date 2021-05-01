@@ -1,6 +1,9 @@
 import Head from 'next/head'
+import {useTheme} from 'next-themes'
 
 export default function Home() {
+  const {theme, setTheme} = useTheme('light')
+
   return (
     <div className="min-h-full py-10 px-5 flex flex-col items-center h-screen bg-white dark:bg-black">
       <Head>
@@ -14,7 +17,11 @@ export default function Home() {
         <div className="flex items-center justify-center">          
           <label className="flex items-center cursor-pointer">
             <div className="relative">
-              <input type="checkbox" id="toggleB" className="sr-only" />
+              <input type="checkbox" id="dark-mode-toggle" className="sr-only" 
+                onClick={() => {
+                  setTheme(theme === 'dark' ? 'light' : 'dark')
+                }}
+              />
               <div className="container mx-auto flex justify-between bg-gray-600 w-14 h-8 rounded-full px-2 items-center">
                 <div>
                   <img src="images/dark-mode.png" width="16" height="16" role="presentation" className="pointer-events-auto" />
