@@ -2,11 +2,31 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import {useTheme} from 'next-themes'
+import { useEffect } from 'react'
 
 export const siteTitle = "Monte's Portfolio"
 
 export default function Layout({ children, home }) {
-  const {theme, setTheme} = useTheme('light')
+  const {theme, setTheme} = useTheme()
+
+  // Key for the value stored in localStorage
+  let themeKey = "theme"
+  
+  // Reference to checkbox input element
+  let inputCheckbox = ""
+
+  // Called only once when component loads
+  useEffect(() => {
+    let themeValue = localStorage.getItem(themeKey)
+    console.log("Existing theme value:", themeValue)
+
+    // If the stored theme is dark - toggle the theme checkbox
+    if (themeValue == "dark") {
+      inputCheckbox.click()
+    }
+
+    setTheme(themeValue)
+  }, []);
 
   return (
     <div className="py-5 px-5 flex flex-col items-center bg-white dark:bg-black">
@@ -52,9 +72,18 @@ export default function Layout({ children, home }) {
           <div className="flex items-center justify-center">          
             <label className="flex items-center cursor-pointer">
               <div className="relative">
-                <input type="checkbox" id="dark-mode-toggle" className="sr-only" 
+                <input
+                  type="checkbox"
+                  id="dark-mode-toggle"
+                  className="sr-only"
+                  ref={input => {
+                    // assigns a reference so we can trigger it later
+                    inputCheckbox = input;
+                  }}
                   onClick={() => {
-                    setTheme(theme === 'dark' ? 'light' : 'dark')
+                    let updatedTheme = theme === 'dark' ? 'light' : 'dark'
+                    window.localStorage.setItem(themeKey, updatedTheme)
+                    setTheme(updatedTheme)
                   }}
                 />
                 <div className="container mx-auto flex justify-between bg-gray-600 w-14 h-8 rounded-full px-2 items-center">
