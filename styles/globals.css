@@ -18,6 +18,10 @@
     @apply text-3xl font-bold my-6
   }
 
+  h3 {
+    @apply text-2xl font-medium my-4
+  }
+
   p {
     @apply text-lg leading-relaxed my-5
   }
