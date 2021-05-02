@@ -10,8 +10,32 @@
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
+  h1 {
+    @apply text-4xl font-extrabold my-6
+  }
+
+  h2 {
+    @apply text-3xl font-bold my-6
+  }
+
+  p {
+    @apply text-lg leading-relaxed my-5
+  }
+
   a {
     @apply text-blue-500 hover:underline
+  }
+
+  blockquote {
+    @apply m-8 italic
+  }
+
+  ol {
+    @apply list-outside ml-6 list-decimal
+  }
+
+  ol li {
+    @apply text-lg leading-relaxed my-2
   }
 }
 

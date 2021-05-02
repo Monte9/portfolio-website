@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 import {useTheme} from 'next-themes'
 
@@ -8,8 +9,8 @@ export default function Layout({ children, home }) {
   const {theme, setTheme} = useTheme('light')
 
   return (
-    <div className="min-h-full py-10 px-5 flex flex-col items-center h-screen bg-white dark:bg-black">
-      <div className="container max-w-xl flex flex-col h-screen">
+    <div className="py-5 px-5 flex flex-col items-center bg-white dark:bg-black">
+      <div className="container max-w-xl flex flex-col">
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <meta
@@ -25,10 +26,28 @@ export default function Layout({ children, home }) {
           <meta name="og:title" content={siteTitle} />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
-        <header className="container max-w-xl mx-auto flex justify-between mb-10">
+        <header className="container max-w-xl mx-auto flex justify-between mb-5">
           {home ? 
-            <h1 className="text-4xl font-extrabold">Monte Thakkar</h1> :
-            <h1 className="text-3xl font-bold">Monte Thakkar</h1>
+            <p className="text-4xl font-extrabold">Monte Thakkar</p> :
+            <div className="flex flex-row">
+              <Link href="/">
+                <a className="flex justify-center items-center mr-2">
+                  <Image
+                    priority
+                    src="/images/profile.jpg"
+                    className="rounded-full"
+                    height={44}
+                    width={44}
+                    alt="Monte Profile Image"
+                  />
+                </a>
+              </Link>
+              <p className="text-2xl font-bold">
+                <Link href="/">
+                  <a>Monte Thakkar</a>
+                </Link>
+              </p>
+            </div>
           }
           <div className="flex items-center justify-center">          
             <label className="flex items-center cursor-pointer">
@@ -53,7 +72,7 @@ export default function Layout({ children, home }) {
         </header>
         <main>{children}</main>
         {!home && (
-          <div className="mt-12">
+          <div className="text-lg font-normal my-4">
             <Link href="/">
               <a>← Back to home</a>
             </Link>
