@@ -37,6 +37,14 @@
   ol li {
     @apply text-lg leading-relaxed my-2
   }
+
+  ul {
+    @apply list-none list-inside
+  }
+
+  ul li {
+    @apply text-lg leading-relaxed my-2
+  }
 }
 
 input:checked ~ .dot {
