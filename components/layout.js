@@ -7,18 +7,26 @@ import { useEffect } from 'react'
 export const siteTitle = "Monte's Portfolio"
 
 export default function Layout({ children, home }) {
+  // Reference to checkbox input element
+  let inputCheckbox = ""
+  
   const {theme, setTheme} = useTheme()
 
   // Key for the value stored in localStorage
   let themeKey = "theme"
-  
-  // Reference to checkbox input element
-  let inputCheckbox = ""
+  let lightTheme = "light"
+  let darkTheme = "dark"
 
   // Called only once when component loads
   useEffect(() => {
+    // Get existing theme value from localStorage
     let themeValue = localStorage.getItem(themeKey)
-    console.log("Existing theme value:", themeValue)
+
+    // If not theme is set then default to light mode
+    if (themeValue === null) {
+      setTheme(lightTheme)
+      return
+    }
 
     // If the stored theme is dark - toggle the theme checkbox
     if (themeValue == "dark") {
@@ -81,7 +89,7 @@ export default function Layout({ children, home }) {
                     inputCheckbox = input;
                   }}
                   onClick={() => {
-                    let updatedTheme = theme === 'dark' ? 'light' : 'dark'
+                    let updatedTheme = theme === darkTheme ? lightTheme : darkTheme
                     window.localStorage.setItem(themeKey, updatedTheme)
                     setTheme(updatedTheme)
                   }}
