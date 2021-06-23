@@ -3,7 +3,7 @@ title: 'CryptoOldPunks'
 subtitle: 'A website for an NFT project'
 imageName: 'cryptooldpunks-website.png'
 website: 'https://www.cryptooldpunks.io/'
-tags: ['website', 'crypto']
+tags: ['website', 'crypto', 'frontend']
 date: '2020-05-18'
 ---
 

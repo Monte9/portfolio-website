@@ -54,9 +54,9 @@ export default function Layout({ children, home }) {
           <meta name="og:title" content={siteTitle} />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
-        <header className="container max-w-xl mx-auto flex justify-between mb-5">
+        <header className="container max-w-xl mx-auto flex justify-between">
           {home ? 
-            <p className="text-4xl font-extrabold">Monte Thakkar</p> :
+            <h1>Monte Thakkar</h1> :
             <div className="flex flex-row">
               <Link href="/">
                 <a className="flex justify-center items-center mr-2">
@@ -70,11 +70,11 @@ export default function Layout({ children, home }) {
                   />
                 </a>
               </Link>
-              <p className="text-2xl font-bold">
+              <h1>
                 <Link href="/">
                   <a>Monte Thakkar</a>
                 </Link>
-              </p>
+              </h1>
             </div>
           }
           <div className="flex items-center justify-center">          
@@ -109,11 +109,11 @@ export default function Layout({ children, home }) {
         </header>
         <main>{children}</main>
         {!home && (
-          <div className="text-lg font-normal my-4">
+          <p>
             <Link href="/">
               <a>← Back to home</a>
             </Link>
-          </div>
+          </p>
         )}
       </div>
     </div>
