@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
 
-import Layout, { siteTitle } from '../components/layout'
-import ProjectsSection from '../components/projects_section'
-import Date from '../components/date'
+import Layout, { siteTitle } from '../components/shared/Layout'
+import ProjectsSection from '../components/projects/ProjectsSection'
+import BlogsSection from '../components/blogs/BlogsSection'
 
 import { getSortedProjectsData } from '../lib/projects'
 import { getSortedPostsData } from '../lib/posts'
@@ -33,20 +32,7 @@ export default function Home ({ allProjectsData, allPostsData }) {
         <p>You can contact me on <a href="https://twitter.com/MThakkar_" target="_blank">Twitter</a>.</p>
       </section>
       <ProjectsSection projects={allProjectsData} />
-      <section>
-        <h2>Blog</h2>
-        {allPostsData.map(({ id, date, title }) => (
-          <p key={id}>
-            <Link href={`/posts/${id}`}>
-              <a>{title}</a>
-            </Link>
-            <br />
-            <div className="mt-2 text-gray-500 text-base">
-              <Date dateString={date} />
-            </div>
-          </p>
-        ))}
-      </section>
+      <BlogsSection blogs={allPostsData} />
     </Layout>
   )
 }

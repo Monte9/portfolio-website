@@ -1,4 +1,4 @@
-import { getPostTagColor } from '../shared/utils'
+import { getPostTagColor } from '../../shared/utils'
 
 export default function ProjectCard({ imageName, tags }) {
   function displayTags() {

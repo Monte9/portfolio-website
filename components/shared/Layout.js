@@ -1,8 +1,8 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import {useTheme} from 'next-themes'
-import { useEffect } from 'react'
 
 export const siteTitle = "Monte's Portfolio"
 
