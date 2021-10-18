@@ -7,15 +7,15 @@ export default function BlogsSection({ blogs }) {
     <section>
       <h2>Blog</h2>
       {blogs.map(({ id, date, title }) => (
-        <p key={id}>
+        <div key={id}>
           <Link href={`/posts/${id}`}>
-            <a>{title}</a>
+            <a className="text-xl">{title}</a>
           </Link>
           <br />
           <div className="mt-2 text-gray-500 text-base">
             <DateText dateString={date} />
           </div>
-        </p>
+        </div>
       ))}
     </section>
   )

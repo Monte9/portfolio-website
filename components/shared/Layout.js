@@ -22,9 +22,10 @@ export default function Layout({ children, home }) {
     // Get existing theme value from localStorage
     let themeValue = localStorage.getItem(themeKey)
 
-    // If not theme is set then default to light mode
-    if (themeValue === null) {
-      setTheme(lightTheme)
+    // If no theme is set then default to dark mode
+    if (!themeValue || themeValue === null || themeValue === "null" ) {
+      setTheme(darkTheme)
+      inputCheckbox.click()
       return
     }
 
@@ -37,8 +38,8 @@ export default function Layout({ children, home }) {
   }, []);
 
   return (
-    <div className="py-5 px-5 flex flex-col items-center bg-white dark:bg-black">
-      <div className="container max-w-xl flex flex-col">
+    <div className="py-5 px-5 flex flex-col items-center bg-background dark:bg-background-dark min-h-screen">
+      <div className="container max-w-screen-lg flex flex-col">
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <meta
@@ -54,7 +55,7 @@ export default function Layout({ children, home }) {
           <meta name="og:title" content={siteTitle} />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
-        <header className="container max-w-xl mx-auto flex justify-between">
+        <header className="container max-w-screen-lg mx-auto flex justify-between">
           {home ? 
             <h1>Monte Thakkar</h1> :
             <div className="flex flex-row">

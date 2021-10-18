@@ -13,7 +13,7 @@ export default function Post({ postData }) {
       </Head>
       <article>
         <h1 className="mb-2">{postData.title}</h1>
-        <h3 className="text-gray-400 mt-0 mb-4">{postData.subtitle}</h3>
+        <h3 className="text-gray-500 mt-0 mb-4">{postData.subtitle}</h3>
         <p className="text-gray-400 mt-0">
           <DateText dateString={postData.date} />
         </p>
