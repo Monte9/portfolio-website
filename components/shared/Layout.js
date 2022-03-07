@@ -1,12 +1,10 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
 import {useTheme} from 'next-themes'
 
 export const siteTitle = "Monte's Portfolio"
 
-export default function Layout({ children, home }) {
+export default function Layout({ children }) {
   // Reference to checkbox input element
   let inputCheckbox = ""
   
@@ -56,28 +54,7 @@ export default function Layout({ children, home }) {
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
         <header className="container max-w-screen-lg mx-auto flex justify-between">
-          {home ? 
-            <h1>Monte Thakkar</h1> :
-            <div className="flex flex-row">
-              <Link href="/">
-                <a className="flex justify-center items-center mr-2">
-                  <Image
-                    priority
-                    src="/images/profile.jpg"
-                    className="rounded-full"
-                    height={44}
-                    width={44}
-                    alt="Monte Profile Image"
-                  />
-                </a>
-              </Link>
-              <h1>
-                <Link href="/">
-                  <a>Monte Thakkar</a>
-                </Link>
-              </h1>
-            </div>
-          }
+          <h1>Monte Thakkar</h1>
           <div className="flex items-center justify-center">          
             <label className="flex items-center cursor-pointer">
               <div className="relative">
@@ -109,13 +86,6 @@ export default function Layout({ children, home }) {
           </div>
         </header>
         <main>{children}</main>
-        {!home && (
-          <p>
-            <Link href="/">
-              <a>← Back to home</a>
-            </Link>
-          </p>
-        )}
       </div>
     </div>
   )

@@ -2,13 +2,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import Layout, { siteTitle } from '../components/shared/Layout'
-import BlogsSection from '../components/blogs/BlogsSection'
 
-import { getSortedPostsData } from '../lib/posts'
-
-export default function Home ({ allPostsData }) {
+export default function Home () {
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>{siteTitle}</title>
       </Head>
@@ -28,17 +25,6 @@ export default function Home ({ allPostsData }) {
         <p>I am super bullish on Blockchain technology and I'm especially interested in <a href="https://www.coindesk.com/what-is-defi" target="_blank">Decentralized Finance (DeFi)</a> and <a href="https://www.forbes.com/advisor/investing/nft-non-fungible-token/" target="_blank">Non-Fungible Tokens (NFTs)</a>.</p>
         <p>You can contact me on <a href="https://twitter.com/MThakkar_" target="_blank">Twitter</a>.</p>
       </section>
-      <BlogsSection blogs={allPostsData} />
     </Layout>
   )
-}
-
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
-
-  return {
-    props: {
-      allPostsData
-    }
-  }
 }
